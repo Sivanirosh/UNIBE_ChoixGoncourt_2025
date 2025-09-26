@@ -12,7 +12,7 @@ Outil d'évaluation pour le jury étudiant du Choix Goncourt 2025. Cette applica
 ### 2. Configuration initiale
 ```bash
 # Cloner le repository
-git clone https://github.com/votreusername/choix-goncourt-2025.git
+git clone https://github.com/sivanirosh/UNIBE_ChoixGoncourt_2025.git
 cd choix-goncourt-2025
 
 # Copier tous les fichiers fournis dans le repository

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { evaluators } from '../../data/evaluators';
-import './Authentication.css';
+import './Authentificator.css';
 
 const Authentication = ({ onLogin }) => {
   const [password, setPassword] = useState('');

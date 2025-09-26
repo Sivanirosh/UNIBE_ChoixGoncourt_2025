@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 
-// Components
-import Authentication from './components/Authentication/Authentication';
+// Components - Fixed import paths
+import Authentication from './components/Authentificator/Authentificator';
 import BookSelector from './components/BookSelector/BookSelector';
-import EvaluationForm from '../components/EvaluationForm/EvaluationForm';
-import ResultsDashboard from './components/ResultsDashboard/ResultsDashboard';
-import Navigation from '../components/Navigation/Navigation';
+import EvaluationForm from './components/EvaluationForm/EvaluationForm';
+import ResultsDashboard from './components/ResultsDashboard/ResultsDashBoard';
+import Navigation from './components/Navigation/Navigation';
 
 // Data and utilities
-import { books } from '../data/books';
-import { evaluators } from '../data/evaluators';
-import { getStoredData, saveData } from '../utils/storage';
+import { books } from './data/books';
+import { evaluators } from './data/evaluators';
+import { getStoredData, saveData } from './utils/storage';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -70,7 +70,7 @@ function App() {
   };
 
   return (
-    <Router basename="/choix-goncourt-2025">
+    <Router basename="/UNIBE_ChoixGoncourt_2025">
       <div className="App">
         <Navigation 
           isAuthenticated={isAuthenticated}

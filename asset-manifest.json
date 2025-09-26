@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/UNIBE_ChoixGoncourt_2025/static/css/main.7e3d04ab.css",
-    "main.js": "/UNIBE_ChoixGoncourt_2025/static/js/main.155dbf91.js",
+    "main.js": "/UNIBE_ChoixGoncourt_2025/static/js/main.f5a0c2fa.js",
     "index.html": "/UNIBE_ChoixGoncourt_2025/index.html",
     "main.7e3d04ab.css.map": "/UNIBE_ChoixGoncourt_2025/static/css/main.7e3d04ab.css.map",
-    "main.155dbf91.js.map": "/UNIBE_ChoixGoncourt_2025/static/js/main.155dbf91.js.map"
+    "main.f5a0c2fa.js.map": "/UNIBE_ChoixGoncourt_2025/static/js/main.f5a0c2fa.js.map"
   },
   "entrypoints": [
     "static/css/main.7e3d04ab.css",
-    "static/js/main.155dbf91.js"
+    "static/js/main.f5a0c2fa.js"
   ]
 }

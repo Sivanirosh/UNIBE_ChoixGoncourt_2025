@@ -5,6 +5,7 @@ import './BookSelector.css';
 const BookSelector = ({ books }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [imageErrors, setImageErrors] = useState(new Set());
 
   // Auto-play slider
   useEffect(() => {
@@ -32,14 +33,43 @@ const BookSelector = ({ books }) => {
   const handleMouseEnter = () => setIsAutoPlaying(false);
   const handleMouseLeave = () => setIsAutoPlaying(true);
 
+  const handleImageError = (bookId) => {
+    setImageErrors(prev => new Set([...prev, bookId]));
+  };
+
+  const ImageWithFallback = ({ book, className, alt }) => {
+    const hasError = imageErrors.has(book.id);
+    
+    if (hasError) {
+      return (
+        <div className={`${className} image-placeholder`}>
+          <div className="placeholder-content">
+            <div className="placeholder-icon">📚</div>
+            <div className="placeholder-text">Image non disponible</div>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <img 
+        src={book.cover} 
+        alt={alt}
+        className={className}
+        onError={() => handleImageError(book.id)}
+      />
+    );
+  };
+
   return (
     <div className="book-selector">
       {/* Hero Section */}
       <div className="hero-section gradient-bg">
         <div className="hero-content">
-          <h1 className="hero-title">Sélection Goncourt 2025</h1>
+          <h1 className="hero-title">Sélection Goncourt 2025 - UniBe</h1>
           <p className="hero-subtitle">
-            Découvrez et évaluez les œuvres littéraires en compétition
+            Découvrez et évaluez les œuvres littéraires en compétition.<br />
+            Plateforme prévue pour le jury du Choix Goncourt 2025 UniBe.
           </p>
           <div className="hero-stats">
             <div className="stat-item">
@@ -47,7 +77,7 @@ const BookSelector = ({ books }) => {
               <span className="stat-label">Livres</span>
             </div>
             <div className="stat-item">
-              <span className="stat-number">11</span>
+              <span className="stat-number">15</span>
               <span className="stat-label">Jurés</span>
             </div>
             <div className="stat-item">
@@ -94,13 +124,10 @@ const BookSelector = ({ books }) => {
                   <div className="book-showcase">
                     <div className="book-cover-container">
                       <div className="book-cover-wrapper">
-                        <img 
-                          src={book.cover} 
-                          alt={`Couverture de ${book.title}`}
+                        <ImageWithFallback 
+                          book={book}
                           className="book-cover-image"
-                          onError={(e) => {
-                            e.target.src = '/placeholder-book.png';
-                          }}
+                          alt={`Couverture de ${book.title}`}
                         />
                         <div className="book-overlay">
                           <Link 
@@ -122,7 +149,7 @@ const BookSelector = ({ books }) => {
                         <p className="book-author">par {book.author}</p>
                       )}
                       <p className="book-description">
-                        Une œuvre remarquable en compétition pour le prestigieux Prix Goncourt 2025.
+                        Séléction Prix Goncourt 2025
                       </p>
                     </div>
                   </div>
@@ -143,7 +170,7 @@ const BookSelector = ({ books }) => {
           </div>
         </div>
 
-        {/* All Books Grid (Optional alternative view) */}
+        {/* All Books Grid */}
         <div className="books-grid-section">
           <div className="section-header">
             <h3>Tous les livres</h3>
@@ -158,12 +185,10 @@ const BookSelector = ({ books }) => {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="card-cover">
-                  <img 
-                    src={book.cover} 
+                  <ImageWithFallback 
+                    book={book}
+                    className="card-cover-image"
                     alt={`Couverture de ${book.title}`}
-                    onError={(e) => {
-                      e.target.src = '/placeholder-book.png';
-                    }}
                   />
                 </div>
                 

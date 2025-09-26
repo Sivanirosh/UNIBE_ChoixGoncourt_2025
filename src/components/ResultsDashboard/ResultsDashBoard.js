@@ -98,8 +98,8 @@ const ResultsDashboard = ({ books, evaluators, getAllEvaluations }) => {
                 
                 <div className="score-details">
                   <div className="total-score">
-                    <span className="score-value">{book.totalScore.toFixed(2)}</span>
-                    <span className="score-max">/20</span>
+                    <span className="score-value">{book.totalScore.toFixed(1)}</span>
+                    <span className="score-max">/10</span>
                   </div>
                   <div className="evaluation-count">
                     {book.evaluationCount} évaluation{book.evaluationCount !== 1 ? 's' : ''}
@@ -111,31 +111,19 @@ const ResultsDashboard = ({ books, evaluators, getAllEvaluations }) => {
                     <div className="criteria-score">
                       <span className="criteria-name">Fond</span>
                       <span className="criteria-value">
-                        {book.criteriaScores.fond ? 
-                          Object.values(book.criteriaScores.fond)
-                            .reduce((sum, score) => sum + score, 0).toFixed(1)
-                          : '0.0'
-                        }
+                        {book.weightedCriteriaScores?.fond?.toFixed(1) || '0.0'}
                       </span>
                     </div>
                     <div className="criteria-score">
                       <span className="criteria-name">Forme</span>
                       <span className="criteria-value">
-                        {book.criteriaScores.forme ? 
-                          Object.values(book.criteriaScores.forme)
-                            .reduce((sum, score) => sum + score, 0).toFixed(1)
-                          : '0.0'
-                        }
+                        {book.weightedCriteriaScores?.forme?.toFixed(1) || '0.0'}
                       </span>
                     </div>
                     <div className="criteria-score">
                       <span className="criteria-name">Expérience</span>
                       <span className="criteria-value">
-                        {book.criteriaScores.experience ? 
-                          Object.values(book.criteriaScores.experience)
-                            .reduce((sum, score) => sum + score, 0).toFixed(1)
-                          : '0.0'
-                        }
+                        {book.weightedCriteriaScores?.experience?.toFixed(1) || '0.0'}
                       </span>
                     </div>
                   </div>

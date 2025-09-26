@@ -48,7 +48,7 @@ const Navigation = ({ isAuthenticated, currentUser, onLogout }) => {
     <nav className={`navigation ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
         <div className="nav-brand">
-          <Link to="/">Choix Goncourt 2025</Link>
+          <Link to="/">Choix Goncourt 2025 - Nirosh Sivanesan</Link>
         </div>
         
         {/* Desktop Navigation */}

@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://sivanirosh.github.io/UNIBE_ChoixGoncourt_2025",
   "dependencies": {
+    "firebase": "^12.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.0",

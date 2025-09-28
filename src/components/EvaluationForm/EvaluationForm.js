@@ -68,12 +68,20 @@ const EvaluationForm = ({ books, currentUser, getUserEvaluation, updateEvaluatio
   };
   
   useEffect(() => {
-    // Load existing evaluation if it exists
-    const existingEvaluation = getUserEvaluation(bookId);
-    if (existingEvaluation) {
-      setEvaluation(existingEvaluation);
-    }
-  }, [bookId, getUserEvaluation]);
+    // Load existing evaluation if it exists (async)
+    const loadExistingEvaluation = async () => {
+      try {
+        const existingEvaluation = await getUserEvaluation(bookId);
+        if (existingEvaluation) {
+          setEvaluation(existingEvaluation);
+        }
+      } catch (error) {
+        console.error('Error loading existing evaluation:', error);
+      }
+    };
+    
+    loadExistingEvaluation();
+  }, [bookId]); // Remove getUserEvaluation from dependencies
   
   // Debounced auto-save to prevent rapid re-renders
   useEffect(() => {
